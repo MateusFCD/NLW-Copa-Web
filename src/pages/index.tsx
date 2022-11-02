@@ -30,6 +30,8 @@ export default function Home(props: HomeProps) {
       alert(
         "Bolão criado com sucesso, o código foi copiado para a área de transferência!"
       );
+
+      setPoolTitle("");
     } catch (err) {
       alert("Falha ao criar o bolão, tente novamente!");
     }
@@ -59,6 +61,7 @@ export default function Home(props: HomeProps) {
             required
             placeholder="Qual nome do seu bolão?"
             onChange={(event) => setPoolTitle(event.target.value)}
+            value={poolTitle}
           />
           <button
             className="bg-yellow-500 px-6 py-4 rounded text-gray-900 font-bold text-sm uppercase hover:bg-yellow-700"
@@ -109,11 +112,11 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      poolCount: poolCountResponse.data.poolCount,
-      guessCount: guessCountResponse.data.poolCount,
-      userCount: userCountResponse.data.poolCount,
+      poolCount: poolCountResponse.data.count,
+      guessCount: guessCountResponse.data.count,
+      userCount: userCountResponse.data.count,
     },
   };
 };
 
-console.log(getServerSideProps);
+// desafio GetStaticProps
